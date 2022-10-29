@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App layout</title>
     <style>
+      /* COLLOR PALETTE
+      #d40c10
+      #040404
+      #cdcbcb
+      #799192
+      #2e1f1e
+
+      */
       * {
         margin: 0;
         padding: 0;
@@ -13,7 +21,8 @@
       }
       body {
         font-family: sans-serif;
-        color: #343a40;
+        background-color: #373737;
+        color: #cdcbcb;
         font-size: 24px;
         height: 100vh;
         text-align: center;
@@ -37,7 +46,7 @@
         color: white;
       }
       menu {
-        background-color: #7048e8;
+        background-color: #040404;
         color: #fff;
         grid-column: 2 /-1;
         display: flex;
@@ -46,14 +55,15 @@
         padding: 0 40px;
       }
       button:last-child {
-        background-color: #d6336c;
+        /* background-color: #d6336c; */
         margin-left: auto;
+        background-color: #6d0406;
       }
       button {
         display: inline-block;
         font-size: 16px;
         font-weight: bold;
-        background-color: #5f3dc4;
+        background-color: #d40c10;
         border: none;
         border-radius: 5%;
         cursor: pointer;
@@ -61,7 +71,7 @@
         padding: 8px 12px;
       }
       section {
-        background-color: #e9ecef;
+        background-color: #242424;
         padding: 40px;
         /* how elements that don't fit into container appear */
         overflow: scroll;
@@ -71,17 +81,19 @@
         flex-direction: column;
       }
       .email {
-        background-color: #adb5bd;
+        border: 1px solid #494949;
+        background-color: #040404;
         height: 96px;
         flex-shrink: 0;
         border-radius: 2%;
+        cursor: pointer;
 
         display: flex;
         align-items: center;
         justify-content: center;
       }
       aside {
-        background-color: #e9ecef;
+        background-color: #242424;
       }
     </style>
   </head>
