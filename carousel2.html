@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carousel</title>
     <style>
+      h1 {
+        text-align: center;
+        margin-top: 10px;
+      }
       .carousel-container {
         position: relative;
         overflow: hidden;
@@ -58,15 +62,17 @@
       .carousel-controls {
         position: absolute;
         top: 50%;
+        left: 0;
+        right: 0;
         transform: translateY(-50%);
         display: flex;
+        justify-content: space-between;
       }
 
       .prev-button,
       .next-button {
         width: 30px;
         height: 30px;
-        margin: 0 10px;
         border: none;
         background-color: #555;
         color: #fff;
@@ -77,6 +83,7 @@
       .next-button:hover {
         background-color: #333;
       }
+
       html,
       body {
         height: 100%;
@@ -92,12 +99,8 @@
   </head>
 
   <body>
-    <header>
-      <!-- Cabeçalho da página -->
-      <h1>Carousel</h1>
-    </header>
-
     <main>
+      <h1>N O S T A L G I A</h1>
       <!-- Contêiner principal do carousel -->
       <div class="carousel-container">
         <!-- Slides do carousel -->
@@ -105,7 +108,7 @@
           <img src="/assets/aranha.png" alt="Imagem 1" />
         </div>
         <div class="carousel-slide">
-          <img src="/assets/gnomo.png" alt="Imagem 2" />
+          <img src="/assets/caracol.png" alt="Imagem 2" />
         </div>
         <div class="carousel-slide">
           <img src="/assets/pato.png" alt="Imagem 3" />
@@ -126,6 +129,6 @@
       </div>
     </main>
 
-    <!-- Scripts JavaScript -->
+    <script src="main.js" type="text/javascript"></script>
   </body>
 </html>
