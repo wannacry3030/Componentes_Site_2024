@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <title>Accordion Component</title>
+    <title>Carousel Component</title>
     <style>
       /*
       SPACING SYSTEM (px)
@@ -18,7 +18,7 @@
       10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
       */
       /* MAIN COLOR: #087f5b */
-      /* MAIN CIKIR: #343a40 */
+      /* MAIN COLOR: #343a40 */
 
       * {
         margin: 0;
@@ -123,9 +123,10 @@
       }
     </style>
   </head>
+
   <body>
     <div class="carousel">
-      <img src="./maria.jpg" alt="maria de almeida" />
+      <img src="./maria.jpg" alt="maria de almeida" class="carousel-image" />
       <blockquote class="testimonial">
         <p class="testimonial-text">
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis
@@ -168,11 +169,98 @@
         </svg>
       </button>
       <div class="dots">
-        <button class="dot dot--fill">&nbsp;</button>
-        <button class="dot">&nbsp;</button>
-        <button class="dot">&nbsp;</button>
-        <button class="dot">&nbsp;</button>
+        <button class="dot dot--fill" data-index="0">&nbsp;</button>
+        <button class="dot" data-index="1">&nbsp;</button>
+        <button class="dot" data-index="2">&nbsp;</button>
+        <button class="dot" data-index="3">&nbsp;</button>
       </div>
     </div>
+
+    <script>
+      const images = [
+        './maria.jpg',
+        './maria.jpg',
+        './maria.jpg',
+        './maria.jpg'
+      ];
+      const testimonials = [
+        {
+          text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis nemo at numquam aperiam commodi inventore doloremque, deserunt deleniti ipsam.',
+          author: 'Maria de Almeida',
+          job: 'Senior Product Manager at EDP Comercial'
+        },
+        {
+          text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+          author: 'João da Silva',
+          job: 'Software Engineer at ABC Tech'
+        },
+        {
+          text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+          author: 'Ana Pereira',
+          job: 'Graphic Designer at XYZ Studio'
+        },
+        {
+          text: 'Sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.',
+          author: 'Carlos Souza',
+          job: 'Marketing Specialist at DEF Corp'
+        }
+      ];
+
+      let currentIndex = 0;
+      let interval;
+
+      const imageElement = document.querySelector('.carousel-image');
+      const textElement = document.querySelector('.testimonial-text');
+      const authorElement = document.querySelector('.testimonial-author');
+      const jobElement = document.querySelector('.testimonial-job');
+      const dots = document.querySelectorAll('.dot');
+
+      function updateCarousel(index) {
+        imageElement.src = images[index];
+        textElement.textContent = testimonials[index].text;
+        authorElement.textContent = testimonials[index].author;
+        jobElement.textContent = testimonials[index].job;
+
+        dots.forEach(dot => dot.classList.remove('dot--fill'));
+        dots[index].classList.add('dot--fill');
+      }
+
+      function startAutoSlide() {
+        interval = setInterval(() => {
+          currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+          updateCarousel(currentIndex);
+        }, 3000); // Muda de slide a cada 3 segundos
+      }
+
+      function stopAutoSlide() {
+        clearInterval(interval);
+      }
+
+      document.querySelector('.btn--left').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+        updateCarousel(currentIndex);
+        stopAutoSlide();
+        startAutoSlide();
+      });
+
+      document.querySelector('.btn--right').addEventListener('click', () => {
+        currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+        updateCarousel(currentIndex);
+        stopAutoSlide();
+        startAutoSlide();
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          currentIndex = parseInt(e.target.dataset.index);
+          updateCarousel(currentIndex);
+          stopAutoSlide();
+          startAutoSlide();
+        });
+      });
+
+      updateCarousel(currentIndex);
+      startAutoSlide();
+    </script>
   </body>
 </html>
